@@ -5,17 +5,23 @@ function compute() {
     var rate = +document.getElementById("rate").value;
     var years = document.getElementById("years").value;
 
-    var currentTime = new Date().getFullYear(); //gets current year
+    interest = principal * years * rate / 100;
+
+    var currentTime = new Date(); //gets current year
+    currentDate.setFullYear(currentDate.getFullYear() + parseInt(years));
+    var displayYear = currentDate.getFullYear();
+
+    if (principal <= 0) {
+        alert("Enter a positive number");
+        document.getElementById("principal").focus();
+        return false;
+    }
 
 
-     interest = principal * years * rate / 100;
-   
-
-
-    document.getElementById("result").innerHTML = 'If you deposit ' + principal + '$ '+ "<br/>"+
-        'at an interest rate of ' + rate + '%. ' + "<br/>"+
-        'you will recieve ' + interest  + '$ ' +"<br/>"+
-        'in the year of ' + currentTime;
+    document.getElementById("result").innerHTML = 'If you deposit ' + principal + '$ ' + "<br/>" +
+        'at an interest rate of ' + rate + '%. ' + "<br/>" +
+        'you will recieve ' + interest + '$ ' + "<br/>" +
+        'in the year of ' + displayYear;
 
 }
 
